@@ -60,7 +60,7 @@ with st.expander("🔍 **Search Configuration & Parameters**", expanded=True):
     
     keywords_input = st.text_area(
         "Keywords (separated by +)",
-        value="CVD+Growth+2D+DFT",
+        value="Single+molecule+magnet+toroidal+ferrotoroidal+anisotropy",
         height=70,
         help="Enter keywords separated by '+' symbols. Example: 'CVD+MoS2'"
     )
@@ -68,15 +68,15 @@ with st.expander("🔍 **Search Configuration & Parameters**", expanded=True):
     col1, col2 = st.columns(2)
     with col1:
         threshold = st.number_input(
-            "Min Matches",
+            "Minimum Keyword Matches",
             min_value=1,
             max_value=10,
-            value=2,
+            value=3,
             help="Minimum number of keywords that must appear in the title"
         )
     with col2:
         limit = st.number_input(
-            "Result Limit",
+            "Maximum Papers Required",
             min_value=10,
             max_value=5000,
             value=100,
@@ -230,3 +230,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
