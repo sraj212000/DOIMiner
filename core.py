@@ -50,7 +50,7 @@ def run_search(keywords, threshold, output_limit, progress_callback=None):
     Returns:
         pd.DataFrame: DataFrame containing relevant papers.
     """
-    SEARCH_SPACE_LIMIT = 500 # Matched user snippet (was 50000)
+    SEARCH_SPACE_LIMIT = 2000 # Matched user snippet (was 50000)
     query_string = " ".join(keywords)
     
     relevant_papers = []
@@ -63,7 +63,7 @@ def run_search(keywords, threshold, output_limit, progress_callback=None):
             select=['DOI', 'title', 'author', 'abstract', 'issued', 'container-title'],
             sort='relevance',
             order='desc',
-            limit=50, # Fetch 50 at a time (matched to user snippet)
+            limit=100, # Fetch 50 at a time (matched to user snippet)
             cursor="*",
             cursor_max=SEARCH_SPACE_LIMIT
         )
@@ -131,3 +131,4 @@ def run_search(keywords, threshold, output_limit, progress_callback=None):
         df = df.sort_values(['Match_Count', 'Year'], ascending=[False, False])
         
     return df
+
